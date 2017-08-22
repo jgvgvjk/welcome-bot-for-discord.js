@@ -1,0 +1,12 @@
+{
+  "name": "Welcome Bot",
+  "version": "1.0.0",
+  "description": "A bot thay says hello",
+  "main": "bot.js",
+  "author": "Willikesgames",
+  "dependencies": {
+    "discord.io": "^2.5.1",
+    "discord.js": "^11.1.0",
+    "winston": "^2.3.1"
+  }
+}
