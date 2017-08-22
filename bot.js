@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+  const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json")
 const fs = require("fs");
@@ -7,13 +7,21 @@ client.login(config.token);
 
 client.on("ready", () => {
   console.log("I am ready!");
+  setInterval (function (){
+       var u, user;
+       for(u in client.users){
+          user = client.users[u];
+          if(user instanceof Discord.User) console.log("["+u+"] "+user.username);
+       }
+   }, 10000);
 });
+
 //set up permissions
 /**/
 client.on("message", (message) => {
-  // Exit and stop if the prefix is not there or if user is a bot
-
-
+  let Owner = message.guild.roles.get("348635364258480140");
+//  let EveryoneID = "349672318936678400";
+//  let EveryMember = message.guild.roles.get("349672318936678400").members
   if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
   if(message.content.startsWith(config.prefix + "prefix")) {
@@ -25,22 +33,35 @@ client.on("message", (message) => {
     // Now we have to save the file.
     fs.writeFile("./config.json", JSON.stringify(config), (err) => console.error);
   }
-  if(message.content.startsWith(config.prefix + "message add")){
+  if(message.content.startsWith(config.prefix + "message join set")){
     if(message.member.roles.has(Owner.id)){
-    let newMessage = message.content.split(" add ").slice(1, 2)[0];
-    config.message = newMessage;
+    let newMessage = message.content.split(" join set ").slice(1, 2)[0];
+    config.Jmessage = newMessage;
     fs.writeFile("./config.json", JSON.stringify(config), (err) => console.error);
-    message.channel.send(config.message);
+    message.channel.send(config.Jmessage);
   }
 }
+if(message.content.startsWith(config.prefix + "message leave set")){
+  if(message.member.roles.has(Owner.id)){
+  let newMessage = message.content.split(" leave set ").slice(1, 2)[0];
+  config.Lmessage = newMessage;
+  fs.writeFile("./config.json", JSON.stringify(config), (err) => console.error);
+  message.channel.send(config.Lmessage);
+}
+}
 });
-
 client.on("guildMemberAdd", (member) => {
   const guild = member.guild;
   NewUser = member.user;
-  member.send(config.message);
+  member.send(config.Jmessage);
   guild.defaultChannel.send("Welcome " + NewUser + " to our server!");
 //  message.newMember.sendMessage("Your message here.");
+});
 
-
+client.on("guildMemberRemove", (member) => {
+  const guild = member.guild;
+  LeavingUser = member.user;
+  member.send(config.Lmessage);
+  guild.defaultChannel.send(LeavingUser + " has left our server. :'(");
+//  message.newMember.sendMessage("Your message here.");
 });
