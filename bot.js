@@ -7,19 +7,12 @@ client.login(config.token);
 
 client.on("ready", () => {
   console.log("I am ready!");
-  setInterval (function (){
-       var u, user;
-       for(u in client.users){
-          user = client.users[u];
-          if(user instanceof Discord.User) console.log("["+u+"] "+user.username);
-       }
-   }, 10000);
 });
 
 //set up permissions
 /**/
 client.on("message", (message) => {
-  let Owner = message.guild.roles.get("348635364258480140");
+  let Owner = message.guild.roles.get(config.OwnerID);
 //  let EveryoneID = "349672318936678400";
 //  let EveryMember = message.guild.roles.get("349672318936678400").members
   if (!message.content.startsWith(config.prefix) || message.author.bot) return;
