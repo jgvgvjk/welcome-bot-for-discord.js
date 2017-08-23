@@ -1,12 +1,5 @@
 {
 "token":"<Your Bot Token>",
 "prefix":"/",
-ownerID:""
-
-
-
-
-
-
-
+"ownerID":"<Role ID here>"
 }
