@@ -22,3 +22,10 @@ token:<your bot token>
 OwnerID:<the role id of what role you want to be able to use the commands>
 prefix:<prefix to initiate commands>
 
+This require nodejs to run.
+
+To set up: 
+1. Navigate to the directory this bot is in.
+2. Run npm install discord.js.
+3. Run node bot.js
+Thats it.
