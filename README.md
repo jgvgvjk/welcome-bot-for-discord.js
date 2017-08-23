@@ -19,5 +19,6 @@ requires a premission set in the config.
 Requires a config.json file.
 The config must have:
 token:<your bot token>
-owner:<the role id of what role you want to be able to use the commands>
+OwnerID:<the role id of what role you want to be able to use the commands>
+prefix:<prefix to initiate commands>
 
