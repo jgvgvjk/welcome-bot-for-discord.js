@@ -1,4 +1,4 @@
-This is a bot for discord that welcomes people when they join with a custom message and announces their departure when they leave.
+ This is a bot for discord that welcomes people when they join with a custom message and announces their departure when they leave.
 
 Commands
 
@@ -25,7 +25,7 @@ prefix:<prefix to initiate commands>
 This require nodejs to run.
 
 To set up: 
-1. Navigate to the directory this bot is in.
+1. Navigate to the directory this bot is in in a command prompt.
 2. Run npm install discord.js.
 3. Run node bot.js
 Thats it.
